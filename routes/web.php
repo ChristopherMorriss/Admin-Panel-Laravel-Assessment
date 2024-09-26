@@ -8,11 +8,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/authentication', function () {
-    return view('authentication');
-});
 
 Route::get('/companies', function () {
     return view('companies', ['companies'=> companies::all()
     ]);
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
