@@ -6,11 +6,17 @@ use App\Models\Companies;
 
 Route::get('/', function () {
     return view('welcome');
+
 });
 
 
 Route::get('/companies', function () {
-    return view('companies', ['companies'=> companies::all()
+    $companies = Employees::with('company')->paginate(3);
+    // $companies=Companies::all();
+    // dd($companies);
+    // return view('companies', ['companies'=> companies::all()
+    // ]);
+    return view('companies', ['companies'=> $companies
     ]);
 });
 Auth::routes();

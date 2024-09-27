@@ -21,4 +21,6 @@ class Companies extends Model{
         'id',
         'Name'
     ];
+
+    protected $table="companies";
 }
