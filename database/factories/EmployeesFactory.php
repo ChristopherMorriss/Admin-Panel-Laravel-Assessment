@@ -3,11 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class EmployeeFactory extends Factory
+class EmployeesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -25,4 +27,6 @@ class EmployeeFactory extends Factory
             'phone_number' => fake()->e164PhoneNumber()
         ];
     }
+
+    
 }
