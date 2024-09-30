@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 
 Route::get('/companies', function () {
-    $companies = Employees::with('company')->paginate(3);
+    $companies = Employees::with('company')->paginate(10);
     // $companies=Companies::all();
     // dd($companies);
     // return view('companies', ['companies'=> companies::all()

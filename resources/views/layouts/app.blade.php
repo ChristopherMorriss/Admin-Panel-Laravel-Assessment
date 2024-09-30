@@ -74,7 +74,6 @@
 
         <main class="py-4">
             @yield('content')
-            <?php echo "$slot" ?>
         </main>
     </div>
 </body>

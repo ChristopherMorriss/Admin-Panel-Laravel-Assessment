@@ -159,6 +159,7 @@
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </footer>
                 </div>
+                <?php phpinfo(); ?>
             </div>
         </div>
     </body>
