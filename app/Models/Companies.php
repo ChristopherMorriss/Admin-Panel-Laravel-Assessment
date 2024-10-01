@@ -18,16 +18,21 @@ class Companies{
 
         ];
     }
-    protected $fillable = [
-        'Name'
-    ];
+    // protected $fillable = [
+    //     'Name'
+    // ];
 
     protected $table="companies";
-    public static function find(int $id): array{
-        $company = Arr::first(static::all(), fn($company) => $company['id'] == $id);
-        if(! $company){
-            abort(404);
-        }
 
-    }
+    // public static function find(int $id): array{
+    //     $company = Arr::first(static::all(), fn($company) => $company['id'] == $id);
+    //     if(! $company){
+    //         abort(404);
+    //     }
+    //     else{
+    //         return $company;
+    //     }
+
+    // }
+    
 }

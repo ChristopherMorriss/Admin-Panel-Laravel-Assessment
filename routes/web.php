@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Employees;
 use App\Models\Companies;
@@ -9,7 +10,17 @@ Route::get('/', function () {
 
 });
 
+class Company{
+    public static function all(): array{
+        return[
+            [
+                'id' => 1,
+                'Name' => 'Johnathan',
+            ]
 
+        ];
+    }
+}
 Route::get('/companies', function () {
     $companies = Employees::with('company')->paginate(10);
     // $companies=Companies::all();
@@ -20,9 +31,19 @@ Route::get('/companies', function () {
     ]);
 });
 
-Route::get('companies/{id}',function($id) {
-    $company = Companies::find($id);
-    return view ('companies', ['companies'=> $company
+Route::get('/companies/{id}',function($id) {
+    //$company = Companies::find($id);
+    $companies = [
+        [
+            'id' => 1,
+            'Name' => 'Johnathan',
+            'email' => 'Email@email',
+            'website' => 'test.com'
+        ]
+
+    ];
+    $company = Arr::first($companies, fn($company) => $company['id'] == $id);
+    return view ('company', ['company'=> $company
     ]);
 });
 Auth::routes();
