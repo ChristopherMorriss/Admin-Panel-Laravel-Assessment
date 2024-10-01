@@ -44,11 +44,6 @@
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -76,13 +71,16 @@
         <main class="py-4">
             @yield('content')
             <h1>Test</h1>
-            <div>
+            <div class="company-list">
                 @foreach ($companies as $company)
-                    <article class=".article">
+                <div class="article-container">
+                    <article class="article">
                         <a href="/companies/{{ $company['id'] }}" class="box">
-                            <strong>{{$company['id']}}</strong>
+                            <strong>{{$company['id']}}</strong></br>
+                            <strong>{{$company['email']}}</strong>
                         </a>
                     </article>
+                </div>
                 @endforeach
                 <div>
                     {{$companies->links()}}

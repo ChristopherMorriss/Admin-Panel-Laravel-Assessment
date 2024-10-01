@@ -19,6 +19,12 @@ Route::get('/companies', function () {
     return view('companies', ['companies'=> $companies
     ]);
 });
+
+Route::get('companies/{id}',function($id) {
+    $company = Companies::find($id);
+    return view ('companies', ['companies'=> $company
+    ]);
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
