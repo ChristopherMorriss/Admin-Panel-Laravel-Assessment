@@ -14,13 +14,26 @@ Route::get('/', function () {
 
 
 Route::get('/companies', function () {
-    $companies = Employees::with('company')->paginate(10);
+    $companies = Employees::with('companies')->latest()->paginate(10);
     // $companies=Companies::all();
     // dd($companies);
     // return view('companies', ['companies'=> companies::all()
     // ]);
     return view('companies', ['companies'=> $companies
     ]);
+});
+
+Route::post('/companies', function () {
+    //validation()
+    //dd(request('name'));
+    Companies::create([
+        'Name' => request('name'),
+        'email' => request('email'),
+        'logo' => 'logo.png',
+        'website' => 'website.com'
+        
+    ]);
+    return redirect('/companies');
 });
 
 Route::get('/create-company',function() {
