@@ -6,9 +6,9 @@ use App\Models\Employees;
 use App\Models\Companies;
 
 Route::get('/', function () {
-    //return view('welcome');
-    $test = Companies::all();
-    dd($test);
+    return view('welcome');
+    // $test = Companies::all();
+    // dd($test);
 
 });
 
@@ -21,6 +21,10 @@ Route::get('/companies', function () {
     // ]);
     return view('companies', ['companies'=> $companies
     ]);
+});
+
+Route::get('/create-company',function() {
+    return view ('create-company');
 });
 
 Route::get('/companies/{id}',function($id) {

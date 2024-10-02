@@ -20,7 +20,7 @@ class CompaniesFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => fake()->randomNumber(8,true),
+            'id' => fake()->unique()->randomNumber(2,true),
             'Name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'logo' => fake()->fileExtension(),

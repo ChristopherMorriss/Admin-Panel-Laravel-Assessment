@@ -8,21 +8,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
 class Companies extends Model{
     use HasFactory, Notifiable;
-    // public static function all(): array{
-    //     return[
-    //         [
-    //             'id' => 1,
-    //             'Name' => 'Johnathan',
-    //             'email' => 'Email@email',
-    //             'website' => 'test.com'
-    //         ]
-
-    //     ];
-    // }
-    // protected $fillable = [
-    //     'Name'
-    // ];
-
     protected $table="companies";
     
     // public static function find(int $id): array{
@@ -37,5 +22,8 @@ class Companies extends Model{
     //     }
 
     // }
+    public function employees(){
+        return $this->hasMany(Employees::class); //Works perfectly (companies_id needs to match with id from Companies.php)
+    }
     
 }

@@ -19,7 +19,8 @@ class EmployeesFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' => fake()->randomNumber(8,true),
+            'id' => fake()->unique()->randomNumber(2,true),
+            'companies_id' => fake()->unique()->randomNumber(2,true),
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
