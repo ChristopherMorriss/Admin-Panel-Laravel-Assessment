@@ -14,7 +14,7 @@ Route::get('/', function () {
 
 
 Route::get('/companies', function () {
-    $companies = Employees::with('companies')->latest()->paginate(10);
+    $companies = Companies::with('employees')->latest()->paginate(10);
     // $companies=Companies::all();
     // dd($companies);
     // return view('companies', ['companies'=> companies::all()
@@ -24,7 +24,10 @@ Route::get('/companies', function () {
 });
 
 Route::post('/companies', function () {
-    //validation()
+    request()->validate([
+        'Name' => ['required', 'min:3'],
+        'email' => ['required']
+    ]);
     //dd(request('name'));
     Companies::create([
         'Name' => request('name'),
@@ -41,7 +44,7 @@ Route::get('/create-company',function() {
 });
 
 Route::get('/companies/{id}',function($id) {
-    $company = Companies::all();
+    $company = Companies::find($id);
     return view ('company', ['company'=> $company
     ]);
 });

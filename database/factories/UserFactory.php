@@ -51,3 +51,5 @@ class UserFactory extends Factory
     //     ]);
     // }// User::factory()->admin()->create()
 }
+
+//App\Models\User::factory(1)->create()

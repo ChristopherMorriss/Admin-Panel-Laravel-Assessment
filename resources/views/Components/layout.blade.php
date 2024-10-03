@@ -69,6 +69,10 @@
         </nav>
 
         <main class="py-4">
+            <div class="flexible">
+                <h1>Test</h1>
+                <a href="/create-company">Create Company</a>
+            </div>
             @yield('content')
             {{$slot}}
         </main>

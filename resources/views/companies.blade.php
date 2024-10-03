@@ -1,5 +1,4 @@
 <x-layout>
-    <h1>Test</h1>
     <div class="company-list">
         @foreach ($companies as $company)
         <div class="article-container">

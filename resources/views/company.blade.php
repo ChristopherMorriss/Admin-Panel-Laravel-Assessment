@@ -1,15 +1,13 @@
 <x-layout>
     <div class="company-list">
-    @foreach ($company as $companies)
         <div class="article-container">
             <article class="article">
-                    <strong>{{$companies['Name']}}</strong>
-                    <strong>{{$companies['id']}}</strong></br>
-                    <strong>{{$companies['email']}}</strong></br>
-                    <strong>{{$companies['website']}}</strong></br>
-                    
+                    <strong>Name: {{$company['Name']}}</strong>
+                    <strong>ID: {{$company['id']}}</strong>
+                    <strong>Email: {{$company['email']}}</strong>
+                    <strong>Website: {{$company['website']}}</strong>
             </article>
+            <button>Edit Company</button>
         </div>
-    @endforeach
     </div>
 </x-layout>

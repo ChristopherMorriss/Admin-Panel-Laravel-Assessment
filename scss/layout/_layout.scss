@@ -35,3 +35,17 @@
 .flex.justify-between.flex-1.sm\:hidden{
     margin-top: 20px;
 }
+
+.flexible{
+    display: flex;
+    justify-content: space-between;
+}
+
+.error-container{
+    margin-top:75px;
+}
+
+.error-pos{
+    font-weight: bold;
+    color: red;
+}
