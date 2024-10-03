@@ -30,7 +30,7 @@ Route::post('/companies', function () {
     ]);
     //dd(request('name'));
     Companies::create([
-        'Name' => request('name'),
+        'Name' => request('Name'),
         'email' => request('email'),
         'logo' => 'logo.png',
         'website' => 'website.com'
@@ -69,20 +69,21 @@ Route::patch('/companies/{id}',function($id) {
         'Name' => ['required', 'min:3'],
         'email' => ['required']
     ]);
-    $company = Companies::find($id);
-    // $company->Name = request('Name');
-    // $company->email = request('email');
-    // $company->save();
+    //dd($company = Companies::find(100)); //Causing the error!!! null
+    $company = Companies::findOrFail($id);
+    $company->Name = request('Name');
+    $company->email = request('email');
+    $company->save();
 
-    $company->update([
-        'Name'=>request('Name'),
-        'email'=>request('email'),
-    ]);
+    // $company->update([
+    //     'Name'=>request('Name'),
+    //     'email'=>request('email'),
+    // ]);
+    return redirect('/companies/' . $company->id);
 });
 
 //Delete
 Route::delete('/companies/{id}',function($id) {
-    $company = Companies::find($id);
-    return view ('company', ['company'=> $company
-    ]);
+    $company = Companies::findOrFail($id)->delete();
+    return redirect('/companies/' . $company->id);
 });

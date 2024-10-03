@@ -9,7 +9,7 @@
             <div>Company Details</div>
             <div class="Input">
                 <div>Name</div>
-                <input id="name" type="name" name="name" required>
+                <input id="name" type="name" name="Name" required>
                 <div>Email</div>
                 <input id="email" type="email" name="email" required>
                 <!-- <div>Website</div>
