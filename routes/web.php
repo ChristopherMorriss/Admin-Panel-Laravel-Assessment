@@ -48,10 +48,41 @@ Route::get('/companies/{id}',function($id) {
     return view ('company', ['company'=> $company
     ]);
 });
+
+//Edit specific company information
+Route::get('/companies/{id}/edit',function($id) {
+    $company = Companies::find($id);
+    return view ('edit-company', ['company'=> $company
+    ]);
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/app', function () {
     return view('layouts/app');
+});
+
+//Update
+Route::patch('/companies/{id}',function($id) {
+    request()->validate([
+        'Name' => ['required', 'min:3'],
+        'email' => ['required']
+    ]);
+    $company = Companies::find($id);
+    // $company->Name = request('Name');
+    // $company->email = request('email');
+    // $company->save();
+
+    $company->update([
+        'Name'=>request('Name'),
+        'email'=>request('email'),
+    ]);
+});
+
+//Delete
+Route::delete('/companies/{id}',function($id) {
+    $company = Companies::find($id);
+    return view ('company', ['company'=> $company
+    ]);
 });

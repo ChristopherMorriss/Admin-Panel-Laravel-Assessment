@@ -1,4 +1,7 @@
 <x-layout>
+    <x-slot:title>
+        Companies
+    </x-slot:title>
     <div class="company-list">
         @foreach ($companies as $company)
         <div class="article-container">
