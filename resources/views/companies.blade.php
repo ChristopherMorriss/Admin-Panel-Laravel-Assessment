@@ -6,7 +6,7 @@
         @foreach ($companies as $company)
         <div class="article-container">
             <article class="article">
-                <a href="/companies/{{ $company['id'] }}" class="box">
+                <a href="/companies/{{$company['id']}}" class="box"> 
                     <strong>{{$company['id']}}</strong></br>
                     <strong>{{$company['email']}}</strong>
                 </a>

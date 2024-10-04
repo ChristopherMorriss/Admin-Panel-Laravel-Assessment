@@ -4,7 +4,7 @@
     </x-slot:title>
     <div class="company-list">
         <div class="container">
-            <form class="box" method="POST" action="/companies/{{$company->id}}">
+            <form class="box" method="POST" action="/companies/{{$company['id']}}">
                 @csrf
                 @method('PATCH')
                 <div class="Input">
@@ -16,11 +16,11 @@
                     <!-- <div>Website</div>
                     <input id="name" type="name" name="name" required> -->
                 </div>
-                <a href="/companies/{{$company->id}}">Cancel</a>
+                <a href="/companies/{{$company['id']}}">Cancel</a>
                 <button type="submit">Update</button>
                 <button type="submit" form="delete-form">Delete</button>
             </form>
-            <form class="box" method="POST" action="/companies/{{$company->id}}" class="hidden" id="delete-form">
+            <form class="box" method="POST" action="/companies/{{$company['id']}}" class="hidden" id="delete-form">
                 @csrf
                 @method('DELETE')
             </form>

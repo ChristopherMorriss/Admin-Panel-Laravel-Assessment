@@ -7,12 +7,12 @@ use App\Models\Companies;
 
 class CompanyController extends Controller
 {
-    public function index(){
-        // dd('Hello');
-        $companies = Companies::with('employees')->latest()->paginate(10);
-        return view('companies', ['companies'=> $companies
-        ]);
-    }
+    // public function index(){
+    //     // dd('Hello');
+    //     $companies = Companies::with('employees')->latest()->paginate(10);
+    //     return view('companies', ['companies'=> $companies
+    //     ]);
+    // }
     public function show(){
         $companies = Companies::with('employees')->latest()->paginate(10);
         return view('companies', ['companies'=> $companies
@@ -37,17 +37,17 @@ class CompanyController extends Controller
         ]);
         return redirect('/companies');
     }
-    public function edit(){
-        $company = Companies::find($id);
+    public function edit(Companies $company){
+        //$company = Companies::find($id);
         return view ('edit-company', ['company'=> $company
         ]);
     }
-    public function update(){
+    public function update(Companies $company){
         request()->validate([
             'Name' => ['required', 'min:3'],
             'email' => ['required']
         ]);
-        $company = Companies::findOrFail($id);
+        //$company = Companies::findOrFail($id);
         $company->Name = request('Name');
         $company->email = request('email');
         $company->save();
@@ -58,9 +58,14 @@ class CompanyController extends Controller
         // ]);
         return redirect('/companies/' . $company->id);
     }
-    public function delete(){
-        $company = Companies::findOrFail($id)->delete();
-        return redirect('/companies/' . $company->id); //Works but generates this error: Attempt to read property on bool
-        //Deleted jobs remain until the page
+    public function destroy(Companies $company){
+        //$company = Companies::findOrFail($id)->delete();
+        $company->delete();
+        return redirect('/companies/' . $company->id);
+    }
+    public function companyID(Companies $company){
+        //$company = Companies::find($id);
+        return view ('company', ['company'=> $company
+        ]);
     }
 }
