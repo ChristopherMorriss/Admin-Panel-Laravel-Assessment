@@ -15,6 +15,11 @@
                 <!-- <div>Website</div>
                 <input id="name" type="name" name="name" required> -->
                 <button type="submit">Submit</button>
+                @guest
+                    <div>You are a guest and do not have the required priviliges to create a company</div>
+                @endguest
+                @auth
+                @endauth
             </div>
             
             </form>

@@ -21,7 +21,7 @@ Route::controller(CompanyController::class)->group(function(){
     
 });
 
-Route::resource('companies', CompanyController::class);
+//Route::resource('companies', CompanyController::class);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

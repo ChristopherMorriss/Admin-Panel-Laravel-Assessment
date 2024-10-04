@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Companies;
+use Illuminate\Support\Facades\Auth;
+//use App\Http\Controllers\Auth;
 
 class CompanyController extends Controller
 {
-    // public function index(){
-    //     // dd('Hello');
-    //     $companies = Companies::with('employees')->latest()->paginate(10);
-    //     return view('companies', ['companies'=> $companies
-    //     ]);
-    // }
+    public function index(){
+        return view('welcome');
+    }
     public function show(){
         $companies = Companies::with('employees')->latest()->paginate(10);
         return view('companies', ['companies'=> $companies
@@ -20,9 +19,14 @@ class CompanyController extends Controller
         
     }
     public function create(){
+        if(Auth::guest()){ //Forces guests to be logged in before they can try to create a company
+            return redirect('/login');
+        }
         return view ('create-company');
     }
     public function store(){
+        return view ('edit-company', ['company'=> $company
+        ]);
         request()->validate([
             'Name' => ['required', 'min:3'],
             'email' => ['required']
@@ -39,6 +43,9 @@ class CompanyController extends Controller
     }
     public function edit(Companies $company){
         //$company = Companies::find($id);
+        if(Auth::guest()){
+            return redirect('/login');
+        }
         return view ('edit-company', ['company'=> $company
         ]);
     }
