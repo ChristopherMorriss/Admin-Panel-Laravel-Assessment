@@ -4,45 +4,19 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Employees;
 use App\Models\Companies;
+use App\Http\Controllers\CompanyController;
 
+//Index
 Route::get('/', function () {
     return view('welcome');
-    // $test = Companies::all();
-    // dd($test);
-
 });
 
+Route::get('/companies', [CompanyController::class,'show']);
+Route::post('/companies', [CompanyController::class,'store']);
+Route::get('/create-company',[CompanyController::class,'create']);
 
-Route::get('/companies', function () {
-    $companies = Companies::with('employees')->latest()->paginate(10);
-    // $companies=Companies::all();
-    // dd($companies);
-    // return view('companies', ['companies'=> companies::all()
-    // ]);
-    return view('companies', ['companies'=> $companies
-    ]);
-});
 
-Route::post('/companies', function () {
-    request()->validate([
-        'Name' => ['required', 'min:3'],
-        'email' => ['required']
-    ]);
-    //dd(request('name'));
-    Companies::create([
-        'Name' => request('Name'),
-        'email' => request('email'),
-        'logo' => 'logo.png',
-        'website' => 'website.com'
-        
-    ]);
-    return redirect('/companies');
-});
-
-Route::get('/create-company',function() {
-    return view ('create-company');
-});
-
+//Store
 Route::get('/companies/{id}',function($id) {
     $company = Companies::find($id);
     return view ('company', ['company'=> $company
@@ -69,7 +43,6 @@ Route::patch('/companies/{id}',function($id) {
         'Name' => ['required', 'min:3'],
         'email' => ['required']
     ]);
-    //dd($company = Companies::find(100)); //Causing the error!!! null
     $company = Companies::findOrFail($id);
     $company->Name = request('Name');
     $company->email = request('email');
@@ -85,5 +58,6 @@ Route::patch('/companies/{id}',function($id) {
 //Delete
 Route::delete('/companies/{id}',function($id) {
     $company = Companies::findOrFail($id)->delete();
-    return redirect('/companies/' . $company->id);
+    return redirect('/companies/' . $company->id); //Works but generates this error: Attempt to read property on bool
+    //Deleted jobs remain until the page
 });

@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:title>
-        Edit Company: {{ $company->Name}}
+        Edit Company: {{$company->Name}}
     </x-slot:title>
     <div class="company-list">
         <div class="container">
@@ -18,6 +18,11 @@
                 </div>
                 <a href="/companies/{{$company->id}}">Cancel</a>
                 <button type="submit">Update</button>
+                <button type="submit" form="delete-form">Delete</button>
+            </form>
+            <form class="box" method="POST" action="/companies/{{$company->id}}" class="hidden" id="delete-form">
+                @csrf
+                @method('DELETE')
             </form>
         </div>
         @if($errors->any())
