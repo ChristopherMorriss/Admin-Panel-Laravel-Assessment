@@ -43,9 +43,9 @@ class CompanyController extends Controller
     }
     public function edit(Companies $company){
         //$company = Companies::find($id);
-        if(Auth::guest()){
-            return redirect('/login');
-        }
+        // if(Auth::guest()){
+        //     return redirect('/login');
+        // }
         return view ('edit-company', ['company'=> $company
         ]);
     }

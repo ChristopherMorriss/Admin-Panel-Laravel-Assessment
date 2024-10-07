@@ -17,6 +17,10 @@
                     <input id="name" type="name" name="name" required> -->
                 </div>
                 <a href="/companies/{{$company['id']}}">Cancel</a>
+                @can('edit',$job)
+                    <button type="submit">Update</button>
+                    <!-- Only appears if the user is allowed to modify the job -->
+                @endcan
                 <button type="submit">Update</button>
                 <button type="submit" form="delete-form">Delete</button>
             </form>

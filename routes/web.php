@@ -15,13 +15,13 @@ Route::controller(CompanyController::class)->group(function(){
     Route::post('/companies','store');
     Route::get('/create-company','create');
     Route::get('/companies/{company}','companyID');
-    Route::get('/companies/{company}/edit','edit');
+    Route::get('/companies/{company}/edit','edit')->middleware('auth')->can('edit','companies');
     Route::patch('/companies/{company}','update');
     Route::delete('/companies/{company}','destroy');
-    
+    //->middleware('auth');
 });
 
-//Route::resource('companies', CompanyController::class);
+//Route::resource('companies', CompanyController::class)->middleware(auth);
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
