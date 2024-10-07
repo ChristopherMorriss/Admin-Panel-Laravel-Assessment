@@ -1,6 +1,13 @@
 .box{
     padding: 2px;
-    height:50px;
+    height:80px; //50px
+}
+
+.logo-box{
+    padding: 2px;
+    height:80px; //50px
+    display: flex;
+
 }
 
 .text{
@@ -9,13 +16,19 @@
     height: 50px;
 }
 
+.logo-article{
+    border:1px solid;
+    margin-left: 10px;
+    padding: 5px;
+     
+}
 
 .article{
     border:1px solid;
-    display: flex;
-    flex-direction: column;
     margin-left: 10px;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .company-list{
@@ -53,3 +66,13 @@
 .heading-slot{
     font-size: 20px;
 }
+
+.contents{
+    margin-left: 10px;
+}
+
+/*List of Objectives:
+Add authorisation for administrators
+Change logo type to website faker
+Remove created at type columns
+*/

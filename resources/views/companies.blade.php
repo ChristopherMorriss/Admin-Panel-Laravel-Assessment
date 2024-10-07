@@ -5,10 +5,13 @@
     <div class="company-list">
         @foreach ($companies as $company)
         <div class="article-container">
-            <article class="article">
-                <a href="/companies/{{$company['id']}}" class="box"> 
-                    <strong>{{$company['id']}}</strong></br>
-                    <strong>{{$company['email']}}</strong>
+            <article class="logo-article">
+                <a href="/companies/{{$company['id']}}" class="logo-box"> 
+                    <img src="https://picsum.photos/seed/50/50" class="logo-img">
+                    <div class="contents">
+                        <strong>{{$company['Name']}}</strong></br>
+                        <strong>{{$company['email']}}</strong>
+                    </div>
                 </a>
             </article>
         </div>

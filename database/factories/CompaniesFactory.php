@@ -23,7 +23,7 @@ class CompaniesFactory extends Factory
             'id' => fake()->unique()->randomNumber(2,true),
             'Name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'logo' => fake()->fileExtension(),
+            'logo' => fake()->url(),
             'website' => fake()->url()	
         ];
     }

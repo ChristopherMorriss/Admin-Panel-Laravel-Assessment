@@ -14,7 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js']) 
+    <!-- Loads the specified files and allows them to be updated without reloading the page -->
 </head>
 <body>
     <div id="app">
