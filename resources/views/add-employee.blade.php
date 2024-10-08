@@ -8,12 +8,16 @@
                 @csrf
             <div>Company Details</div>
             <div class="Input">
-                <div>Name</div>
-                <input id="name" type="name" name="Name" required>
+                <div>First Name</div>
+                <input id="first_name" type="name" name="first_name" required>
+                <div>Last Name</div>
+                <input id="last_name" type="name" name="last_name" required>
                 <div>Email</div>
                 <input id="email" type="email" name="email" required>
-                <div>Website</div>
-                <input id="name" type="website" name="website">
+                <div>Company</div>
+                <input id="company" type="name" name="company" required>
+                <div>Phone Number</div>
+                <input id="phone_number" type="tel" name="phone_number" required>
                 @auth
                     @if (Auth::user()->admin == 1)
                         <button type="submit">Submit</button>

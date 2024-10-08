@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Companies;
 use Illuminate\Support\Facades\Auth;
 //use App\Http\Controllers\Auth;
- 
+
 class CompanyController extends Controller
 {
     public function index(){
@@ -25,8 +25,6 @@ class CompanyController extends Controller
         return view ('create-company');
     }
     public function store(){
-        return view ('edit-company', ['company'=> $company
-        ]);
         request()->validate([
             'Name' => ['required', 'min:3'],
             'email' => ['required']

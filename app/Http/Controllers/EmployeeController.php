@@ -25,54 +25,64 @@ class EmployeeController extends Controller
         return view ('add-employee'); //Changes stop here
     }
     public function store(){
-        return view ('edit-company', ['company'=> $company
-        ]);
         request()->validate([
-            'Name' => ['required', 'min:3'],
-            'email' => ['required']
-        ]);
-        //dd(request('name'));
-        Companies::create([
-            'Name' => request('Name'),
-            'email' => request('email'),
-            'logo' => 'logo.png',
-            'website' => 'website.com'
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'email' => ['required'],
+            'company' => ['required'],
+            'phone_number' => ['required']
             
         ]);
-        return redirect('/companies');
+        Employees::create([
+            'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
+            'email' => request('email'),
+            'companies_id' => fake()->unique()->randomNumber(2,true),
+            'company' => request('company'),
+            'phone_number' => request('phone_number')
+            
+        ]);
+        return redirect('/employees');
     }
-    public function edit(Companies $company){
+    public function edit(Employees $employee){
         //$company = Companies::find($id);
         // if(Auth::guest()){
         //     return redirect('/login');
         // }
-        return view ('edit-company', ['company'=> $company
+        //dd('Correct');
+        return view ('edit-employee', ['employee'=> $employee
         ]);
     }
-    public function update(Companies $company){
+    public function update(Employees $employee){
         request()->validate([
-            'Name' => ['required', 'min:3'],
-            'email' => ['required']
+            'first_name' => ['required', 'min:3'],
+            'last_name' => ['required', 'min:3'],
+            'email' => ['required'],
+            'company' => ['required'],
+            'phone_number' => ['required']
         ]);
         //$company = Companies::findOrFail($id);
-        $company->Name = request('Name');
-        $company->email = request('email');
-        $company->save();
+        $employee->first_name = request('first_name');
+        $employee->last_name = request('last_name');
+        $employee->email = request('email');
+        $employee->company = request('company');
+        $employee->phone_number = request('phone_number');
+        $employee->save();
     
         // $company->update([
         //     'Name'=>request('Name'),
         //     'email'=>request('email'),
         // ]);
-        return redirect('/companies/' . $company->id);
+        return redirect('/employees/' . $employee->id);
     }
-    public function destroy(Companies $company){
+    public function destroy(Employees $employee){
         //$company = Companies::findOrFail($id)->delete();
-        $company->delete();
-        return redirect('/companies/' . $company->id);
+        $employee->delete();
+        return redirect('/employees/' . $employee->id);
     }
-    public function companyID(Companies $company){
+    public function employeeID(Employees $employee){
         //$company = Companies::find($id);
-        return view ('company', ['company'=> $company
+        return view ('employee', ['employee'=> $employee
         ]);
     }
 }

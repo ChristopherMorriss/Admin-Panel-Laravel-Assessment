@@ -26,7 +26,7 @@ Route::controller(CompanyController::class)->group(function(){
 
 Route::controller(EmployeeController::class)->group(function(){
     Route::get('/employees','show');
-    Route::post('/employeees','store');
+    Route::post('/employees','store');
     Route::get('/add-employee','create');
     Route::get('/employees/{employee}','employeeID');
     Route::get('/employees/{employee}/edit','edit');

@@ -12,7 +12,11 @@ class Employees extends Model{
     protected $fillable = [
         'id',
         'first_name',
-        'last_name'
+        'last_name',
+        'email',
+        'companies_id',
+        'company',
+        'phone_number'
     ];
 
     public function companies(){
