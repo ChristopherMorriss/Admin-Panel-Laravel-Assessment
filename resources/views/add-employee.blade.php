@@ -17,7 +17,7 @@
                 <div>Company</div>
                 <input id="company" type="name" name="company" required>
                 <div>Phone Number</div>
-                <input id="phone_number" type="tel" name="phone_number" required>
+                <input id="phone_number" type="tel" name="phone_number" required><br>
                 @auth
                     @if (Auth::user()->admin == 1)
                         <button type="submit">Submit</button>

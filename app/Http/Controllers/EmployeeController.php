@@ -78,7 +78,7 @@ class EmployeeController extends Controller
     public function destroy(Employees $employee){
         //$company = Companies::findOrFail($id)->delete();
         $employee->delete();
-        return redirect('/employees/' . $employee->id);
+        return redirect('/employees');
     }
     public function employeeID(Employees $employee){
         //$company = Companies::find($id);
