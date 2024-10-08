@@ -1,10 +1,10 @@
 <x-layout>
     <x-slot:title>
-        Create Company
+        Add Employee 
     </x-slot:title>
     <div class="company-list">
         <div class="container">
-            <form class="box" method="POST" action="/companies">
+            <form class="box" method="POST" action="/employees">
                 @csrf
             <div>Company Details</div>
             <div class="Input">

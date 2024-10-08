@@ -74,6 +74,8 @@
                 @auth
                     @if (Auth::user()->admin)
                         <a href="/create-company">Create Company</a>
+                        <a href="/add-employee">Add Employee</a>
+
                     @endif
                 @endauth
             </div>

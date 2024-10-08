@@ -1,9 +1,9 @@
 <x-layout>
     <x-slot:title>
-        Create Company
+        Company Information
     </x-slot:title>
     <div class="company-list">
-        <div class="article-container">
+        <div class="article-container container">
             <article class="article">
                     <strong>Name: {{$company->Name}}</strong>
                     <strong>ID: {{$company['id']}}</strong>

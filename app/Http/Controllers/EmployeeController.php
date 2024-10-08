@@ -3,26 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employees;
 use App\Models\Companies;
 use Illuminate\Support\Facades\Auth;
-//use App\Http\Controllers\Auth;
- 
-class CompanyController extends Controller
+
+class EmployeeController extends Controller
 {
     public function index(){
         return view('welcome');
     }
     public function show(){
-        $companies = Companies::with('employees')->latest()->paginate(10);
-        return view('companies', ['companies'=> $companies
+        $employees = Employees::with('companies')->latest()->paginate(10);
+        return view('employees', ['employees'=> $employees
         ]);
         
     }
     public function create(){
-        if(Auth::guest()){ //Forces guests to be logged in before they can try to create a company
+        if(Auth::guest()){ 
             return redirect('/login');
         }
-        return view ('create-company');
+        return view ('add-employee'); //Changes stop here
     }
     public function store(){
         return view ('edit-company', ['company'=> $company
@@ -76,3 +76,5 @@ class CompanyController extends Controller
         ]);
     }
 }
+
+

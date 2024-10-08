@@ -1,23 +1,23 @@
 <x-layout>
     <x-slot:title>
-        Edit Company: {{$company->Name}}
+        Edit employee: {{$employee->Name}}
     </x-slot:title>
-    <div class="company-list">
+    <div class="employee-list">
         <div class="container">
-            <form class="box" method="POST" action="/companies/{{$company['id']}}">
+            <form class="box" method="POST" action="/employees/{{$employee['id']}}">
                 @csrf
                 @method('PATCH')
                 <div class="Input">
                     <div>Name</div>
-                    <input id="name" type="name" name="Name" required value="{{$company->Name}}">
+                    <input id="name" type="name" name="Name" required value="{{$employee->Name}}">
                     <div>Email</div>
-                    <input id="email" type="email" name="email" required value="{{$company->email}}">
+                    <input id="email" type="email" name="email" required value="{{$employee->email}}">
                     
                     <!-- <div>Website</div>
                     <input id="name" type="name" name="name" required> -->
                 </div>
-                <a href="/companies/{{$company['id']}}">Cancel</a>
-                <!-- can('edit',$companies) -->
+                <a href="/employees/{{$employee['id']}}">Cancel</a>
+                <!-- can('edit',$employees) -->
                 <!-- <button type="submit">Update</button> -->
                 <!-- Only appears if the user is allowed to modify the job -->
                 <!-- endcan -->
@@ -29,7 +29,7 @@
                 @endauth
                 
             </form>
-            <form class="box" method="POST" action="/companies/{{$company['id']}}" class="hidden" id="delete-form">
+            <form class="box" method="POST" action="/employees/{{$employee['id']}}" class="hidden" id="delete-form">
                 @csrf
                 @method('DELETE')
             </form>
