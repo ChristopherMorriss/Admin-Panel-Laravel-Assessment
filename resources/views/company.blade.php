@@ -10,7 +10,9 @@
                     <strong>Email: {{$company['email']}}</strong>
                     <strong>Website: {{$company['website']}}</strong>
             </article>
-            <a href="/companies/{{$company['id']}}/edit">Edit Company</a>
+            @auth
+                <a href="/companies/{{$company['id']}}/edit">Edit Company</a>
+            @endauth
         </div>
     </div>
 </x-layout>

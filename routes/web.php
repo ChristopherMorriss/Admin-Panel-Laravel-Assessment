@@ -4,6 +4,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Employees;
 use App\Models\Companies;
+use App\Models\User;
 use App\Http\Controllers\CompanyController;
 //Index
 Route::get('/', function () {
@@ -15,7 +16,8 @@ Route::controller(CompanyController::class)->group(function(){
     Route::post('/companies','store');
     Route::get('/create-company','create');
     Route::get('/companies/{company}','companyID');
-    Route::get('/companies/{company}/edit','edit')->middleware('auth')->can('edit','companies');
+    Route::get('/companies/{company}/edit','edit');
+    //->middleware('auth')->can('edit','companies');
     Route::patch('/companies/{company}','update');
     Route::delete('/companies/{company}','destroy');
     //->middleware('auth');
@@ -27,5 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/app', function () {
     return view('layouts/app');
+    //dd(Auth::user()->admin );
+    
 });
 
