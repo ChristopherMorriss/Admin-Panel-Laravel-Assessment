@@ -9,9 +9,8 @@
                 <a href="/companies/{{$company['id']}}" class="logo-box"> 
                     <img src="https://picsum.photos/seed/50/50" class="logo-img">
                     <div class="contents">
-                        <strong>{{$company['Name']}}</strong></br>
-                        <strong>{{$company['email']}}</strong></br>
-                        <strong>{{$company['website']}}</strong>
+                        <strong>{{$company['Name']}}</strong>
+                        <strong>{{$company['email']}}</strong>          
                     </div>
                 </a>
             </article>

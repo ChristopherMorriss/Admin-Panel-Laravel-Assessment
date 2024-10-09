@@ -13,11 +13,11 @@
                     <div>Last Name</div>
                     <input id="last_name" type="name" name="last_name" required value="{{$employee->last_name}}">
                     <div>Email</div>
-                    <input id="email" type="email" name="email" required value="{{$employee->email}}">
+                    <input id="email" type="email" name="email" value="{{$employee->email}}">
                     <div>Company</div>
-                    <input id="company" type="name" name="company" required value="{{$employee->company}}">
+                    <input id="company" type="name" name="company" value="{{$employee->company}}">
                     <div>Phone Number</div>
-                    <input id="phone_number" type="tel" name="phone_number" required value="{{$employee->phone_number}}">
+                    <input id="phone_number" type="tel" name="phone_number" value="{{$employee->phone_number}}">
                     
                     <!-- <div>Website</div>
                     <input id="name" type="name" name="name" required> -->
@@ -33,6 +33,13 @@
                         <button type="submit" form="delete-form2">Delete</button>
                     @endif
                 @endauth
+                @if($errors->any())
+                    <div class="container error-container">
+                        @foreach($errors->all() as $error)
+                            <div class="error-pos">{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
                 
             </form>
             <form class="box" method="POST" action="/employees/{{$employee['id']}}" class="hidden" id="delete-form2">
@@ -40,12 +47,5 @@
                 @method('DELETE')
             </form>
         </div>
-        @if($errors->any())
-            <div class="container error-container">
-                @foreach($errors->all() as $error)
-                    <div class="error-pos">{{ $error }}</div>
-                @endforeach
-            </div>
-        @endif
     </div>
 </x-layout>

@@ -27,8 +27,9 @@ class CompanyController extends Controller
     public function store(){
         request()->validate([
             'Name' => ['required', 'min:3'],
-            'email' => ['required'],
-            'logo' => ['dimensions:min_width=100,min_height=100']
+            'email' => ['email','nullable'],
+            'logo' => ['dimensions:min_width=100,min_height=100','nullable'],
+            'website' => ['url','nullable']
         ]);
         //dd(request('name'));
         Companies::create([ //Takes the information from the input fields of Name, email, logo, website and stores them in the database
@@ -51,7 +52,6 @@ class CompanyController extends Controller
     public function update(Companies $company){
         request()->validate([
             'Name' => ['required', 'min:3'],
-            'email' => ['required']
         ]);
         //$company = Companies::findOrFail($id);
         $company->Name = request('Name');

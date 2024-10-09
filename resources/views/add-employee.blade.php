@@ -9,31 +9,31 @@
             <div>Employee Details</div>
             <div class="Input">
                 <div>First Name</div>
-                <input id="first_name" type="name" name="first_name" required>
+                <input id="first_name" type="name" name="first_name">
                 <div>Last Name</div>
-                <input id="last_name" type="name" name="last_name" required>
+                <input id="last_name" type="name" name="last_name">
                 <div>Email</div>
-                <input id="email" type="email" name="email" required>
+                <input id="email" type="email" name="email">
                 <div>Company</div>
-                <input id="company" type="name" name="company" required>
+                <input id="company" type="name" name="company">
                 <div>Phone Number</div>
-                <input id="phone_number" type="tel" name="phone_number" required><br>
+                <input id="phone_number" type="tel" name="phone_number"><br>
                 @auth
                     @if (Auth::user()->admin == 1)
                         <button type="submit">Submit</button>
                         <!-- Only the admin user is allowed to add an employee -->
                     @endif
                 @endauth
+                @if($errors->any())
+                        <div class="container error-container">
+                            @foreach($errors->all() as $error)
+                                <div class="error-pos">{{ $error }}</div>
+                            @endforeach
+                        </div>
+                @endif
             </div>
             
             </form>
         </div>
-        @if($errors->any())
-            <div class="container error-container">
-                @foreach($errors->all() as $error)
-                    <div class="error-pos">{{ $error }}</div>
-                @endforeach
-            </div>
-        @endif
     </div>
 </x-layout>

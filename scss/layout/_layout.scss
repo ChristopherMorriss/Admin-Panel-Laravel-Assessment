@@ -25,7 +25,7 @@
 
 .article{
     border:1px solid;
-    margin-left: 10px;
+    //margin-left: 10px;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -51,11 +51,11 @@
 
 .flexible{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-}
-
-.error-container{
-    margin-top:75px;
+    @media(min-width: 578px){
+        flex-direction: row;
+    }
 }
 
 .error-pos{
@@ -69,6 +69,8 @@
 
 .contents{
     margin-left: 10px;
+    display:flex;
+    flex-direction: column;
 }
 
 #phone_number{

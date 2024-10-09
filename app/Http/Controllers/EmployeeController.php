@@ -27,10 +27,10 @@ class EmployeeController extends Controller
     public function store(){
         request()->validate([
             'first_name' => ['required','string','min:3'], //Forcing the input to be a string isn't working...
-            'last_name' => ['required','string'],
-            'email' => ['required', 'email'],
-            'company' => ['required'],
-            'phone_number' => ['required','string']
+            'last_name' => ['required','string','min:3'],
+            'email' => ['email','nullable'],
+            'company' => ['string','nullable'],
+            'phone_number' => ['string','nullable']
             //'regex:/^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/)'
             //Above regex not working properly for phone_number
         ]);
@@ -58,9 +58,9 @@ class EmployeeController extends Controller
         request()->validate([
             'first_name' => ['required', 'min:3'],
             'last_name' => ['required', 'min:3'],
-            'email' => ['required'],
-            'company' => ['required'],
-            'phone_number' => ['required']
+            'email' => ['email'],
+            'company' => ['string'],
+            'phone_number' => ['string']
         ]);
         //$company = Companies::findOrFail($id);
         $employee->first_name = request('first_name');

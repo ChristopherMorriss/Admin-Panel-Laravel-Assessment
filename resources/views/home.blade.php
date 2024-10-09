@@ -6,9 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    {{ __('Dashboard') }}
-                    <a href="/companies">View Companies</a>
-                    <a href="/companies">View Employees</a>
+                    <!-- {{ __('Dashboard') }} -->
+                    {{ __('Manage Companies') }}
                 </div>
                 
                 <div class="card-body">
@@ -18,7 +17,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <!-- {{ __('You are logged in!') }} -->
+                    <a href="/companies">View Companies</a>
+                    <a href="/employees">View Employees</a>
                 </div>
             </div>
         </div>
