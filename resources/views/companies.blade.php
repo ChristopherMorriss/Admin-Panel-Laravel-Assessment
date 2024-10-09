@@ -10,7 +10,8 @@
                     <img src="https://picsum.photos/seed/50/50" class="logo-img">
                     <div class="contents">
                         <strong>{{$company['Name']}}</strong></br>
-                        <strong>{{$company['email']}}</strong>
+                        <strong>{{$company['email']}}</strong></br>
+                        <strong>{{$company['website']}}</strong>
                     </div>
                 </a>
             </article>

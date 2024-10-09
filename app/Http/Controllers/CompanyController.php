@@ -27,14 +27,15 @@ class CompanyController extends Controller
     public function store(){
         request()->validate([
             'Name' => ['required', 'min:3'],
-            'email' => ['required']
+            'email' => ['required'],
+            'logo' => ['dimensions:min_width=100,min_height=100']
         ]);
         //dd(request('name'));
-        Companies::create([
+        Companies::create([ //Takes the information from the input fields of Name, email, logo, website and stores them in the database
             'Name' => request('Name'),
             'email' => request('email'),
-            'logo' => 'logo.png',
-            'website' => 'website.com'
+            'logo' => request('logo'),
+            'website' => request('website')
             
         ]);
         return redirect('/companies');
@@ -66,7 +67,7 @@ class CompanyController extends Controller
     public function destroy(Companies $company){
         //$company = Companies::findOrFail($id)->delete();
         $company->delete();
-        return redirect('/companies/' . $company->id);
+        return redirect('/companies');
     }
     public function companyID(Companies $company){
         //$company = Companies::find($id);

@@ -6,7 +6,7 @@
         <div class="container">
             <form class="box" method="POST" action="/employees">
                 @csrf
-            <div>Company Details</div>
+            <div>Employee Details</div>
             <div class="Input">
                 <div>First Name</div>
                 <input id="first_name" type="name" name="first_name" required>
@@ -21,6 +21,7 @@
                 @auth
                     @if (Auth::user()->admin == 1)
                         <button type="submit">Submit</button>
+                        <!-- Only the admin user is allowed to add an employee -->
                     @endif
                 @endauth
             </div>

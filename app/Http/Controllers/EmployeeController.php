@@ -26,12 +26,13 @@ class EmployeeController extends Controller
     }
     public function store(){
         request()->validate([
-            'first_name' => ['required'],
-            'last_name' => ['required'],
-            'email' => ['required'],
+            'first_name' => ['required','string','min:3'], //Forcing the input to be a string isn't working...
+            'last_name' => ['required','string'],
+            'email' => ['required', 'email'],
             'company' => ['required'],
-            'phone_number' => ['required']
-            
+            'phone_number' => ['required','string']
+            //'regex:/^(((\+44\s?\d{4}|\(?0\d{4}\)?)\s?\d{3}\s?\d{3})|((\+44\s?\d{3}|\(?0\d{3}\)?)\s?\d{3}\s?\d{4})|((\+44\s?\d{2}|\(?0\d{2}\)?)\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/)'
+            //Above regex not working properly for phone_number
         ]);
         Employees::create([
             'first_name' => request('first_name'),
