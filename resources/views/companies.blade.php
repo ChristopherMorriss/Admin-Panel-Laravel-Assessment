@@ -17,6 +17,7 @@
         </div>
         @endforeach
         <div>
+            <!-- Used to show the arrow and numbers links to the other pages of employees -->
             {{$companies->links()}}
         </div>
     </div>

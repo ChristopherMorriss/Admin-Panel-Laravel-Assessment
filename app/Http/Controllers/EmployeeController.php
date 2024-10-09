@@ -12,21 +12,21 @@ class EmployeeController extends Controller
     public function index(){
         return view('welcome');
     }
-    public function show(){
+    public function show(){ //Displays the list of employees, with the most recently added employee as the first option on the first page
         $employees = Employees::with('companies')->latest()->paginate(10);
         return view('employees', ['employees'=> $employees
         ]);
         
     }
-    public function create(){
-        if(Auth::guest()){ 
+    public function create(){ //Returns the view for adding a new employee
+        if(Auth::guest()){ //Forces users to be logged in before they can try to add an employee 
             return redirect('/login');
         }
-        return view ('add-employee'); //Changes stop here
+        return view ('add-employee'); 
     }
-    public function store(){
+    public function store(){ //Creates a new employee and redirects the user to the employees page
         request()->validate([
-            'first_name' => ['required','string','min:3'], //Forcing the input to be a string isn't working...
+            'first_name' => ['required','string','min:3'], 
             'last_name' => ['required','string','min:3'],
             'email' => ['email','nullable'],
             'company' => ['string','nullable'],
@@ -45,7 +45,7 @@ class EmployeeController extends Controller
         ]);
         return redirect('/employees');
     }
-    public function edit(Employees $employee){
+    public function edit(Employees $employee){//Returns the view for the edit employee form
         //$company = Companies::find($id);
         // if(Auth::guest()){
         //     return redirect('/login');
@@ -54,13 +54,13 @@ class EmployeeController extends Controller
         return view ('edit-employee', ['employee'=> $employee
         ]);
     }
-    public function update(Employees $employee){
+    public function update(Employees $employee){ //Updates the contents of a specific employee and redirects to that employee's page
         request()->validate([
             'first_name' => ['required', 'min:3'],
             'last_name' => ['required', 'min:3'],
-            'email' => ['email'],
-            'company' => ['string'],
-            'phone_number' => ['string']
+            'email' => ['email','nullable'],
+            'company' => ['string','nullable'],
+            'phone_number' => ['string','nullable']
         ]);
         //$company = Companies::findOrFail($id);
         $employee->first_name = request('first_name');
@@ -76,12 +76,12 @@ class EmployeeController extends Controller
         // ]);
         return redirect('/employees/' . $employee->id);
     }
-    public function destroy(Employees $employee){
+    public function destroy(Employees $employee){//Deletes a specific employee and redirects the user to the employee page
         //$company = Companies::findOrFail($id)->delete();
         $employee->delete();
         return redirect('/employees');
     }
-    public function employeeID(Employees $employee){
+    public function employeeID(Employees $employee){//Returns the view containing the information of a specific employee
         //$company = Companies::find($id);
         return view ('employee', ['employee'=> $employee
         ]);

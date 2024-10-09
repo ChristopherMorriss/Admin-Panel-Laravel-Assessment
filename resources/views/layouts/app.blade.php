@@ -14,7 +14,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js']) 
+    @vite(['resources/sass/app.scss', 'resources/js/app.js','css/styles.css', 'css/styles.css.map']) 
     <!-- Loads the specified files and allows them to be updated without reloading the page -->
 </head>
 <body>
@@ -41,12 +41,6 @@
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

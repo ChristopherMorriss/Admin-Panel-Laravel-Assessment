@@ -8,11 +8,11 @@ use App\Models\User;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 //Index
-Route::get('/', function () {
+Route::get('/', function () { //The root page
     return view('welcome');
 });
 
-Route::controller(CompanyController::class)->group(function(){
+Route::controller(CompanyController::class)->group(function(){ //Controller used for handling all company related pages
     Route::get('/companies','show');
     Route::post('/companies','store');
     Route::get('/create-company','create');
@@ -24,7 +24,7 @@ Route::controller(CompanyController::class)->group(function(){
     //->middleware('auth');
 });
 
-Route::controller(EmployeeController::class)->group(function(){
+Route::controller(EmployeeController::class)->group(function(){ //Controller used for handling all employee related pages
     Route::get('/employees','show');
     Route::post('/employees','store');
     Route::get('/add-employee','create');
@@ -35,11 +35,10 @@ Route::controller(EmployeeController::class)->group(function(){
 });
 //Route::resource('companies', CompanyController::class)->middleware(auth);
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); 
+//The home page (not to be confused with the root page) which the user is redirected to when they login
 
 Route::get('/app', function () {
     return view('layouts/app');
-    //dd(Auth::user()->admin );
-    
 });
 

@@ -12,19 +12,19 @@ class CompanyController extends Controller
     public function index(){
         return view('welcome');
     }
-    public function show(){
+    public function show(){//Displays the list of companies, with the most recently added company as the first option on the first page
         $companies = Companies::with('employees')->latest()->paginate(10);
         return view('companies', ['companies'=> $companies
         ]);
         
     }
-    public function create(){
-        if(Auth::guest()){ //Forces guests to be logged in before they can try to create a company
+    public function create(){//Returns the view for creating a new company
+        if(Auth::guest()){ //Forces users to be logged in before they can try to create a company
             return redirect('/login');
         }
         return view ('create-company');
     }
-    public function store(){
+    public function store(){ //Creates a new company and redirects the user to the companies page
         request()->validate([
             'Name' => ['required', 'min:3'],
             'email' => ['email','nullable'],
@@ -41,7 +41,7 @@ class CompanyController extends Controller
         ]);
         return redirect('/companies');
     }
-    public function edit(Companies $company){
+    public function edit(Companies $company){ //Returns the view for the edit company form
         //$company = Companies::find($id);
         // if(Auth::guest()){
         //     return redirect('/login');
@@ -49,7 +49,7 @@ class CompanyController extends Controller
         return view ('edit-company', ['company'=> $company
         ]);
     }
-    public function update(Companies $company){
+    public function update(Companies $company){ //Updates the contents of a specific company and redirects to that company's page
         request()->validate([
             'Name' => ['required', 'min:3'],
         ]);
@@ -64,12 +64,12 @@ class CompanyController extends Controller
         // ]);
         return redirect('/companies/' . $company->id);
     }
-    public function destroy(Companies $company){
+    public function destroy(Companies $company){ //Deletes a specific company and redirects the user to the company page
         //$company = Companies::findOrFail($id)->delete();
         $company->delete();
         return redirect('/companies');
     }
-    public function companyID(Companies $company){
+    public function companyID(Companies $company){ //Returns the view containing the information of a specific company
         //$company = Companies::find($id);
         return view ('company', ['company'=> $company
         ]);

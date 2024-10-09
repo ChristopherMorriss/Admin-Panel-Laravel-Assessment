@@ -8,6 +8,7 @@
             <article class="logo-article">
                 <a href="/employees/{{$employee['id']}}" class="logo-box"> 
                     <img src="https://picsum.photos/seed/50/50" class="logo-img">
+                    <!-- Placeholder logo used above -->
                     <div class="contents">
                         <strong>{{$employee['first_name']}} {{$employee['last_name']}}</strong>
                         <strong>{{$employee['email']}}</strong>
@@ -17,7 +18,8 @@
             </article>
         </div>
         @endforeach
-        <div>
+        <div class="pagination">
+            <!-- Used to show the arrow and numbers links to the other pages of employees -->
             {{$employees->links()}}
         </div>
     </div>

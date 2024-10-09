@@ -39,6 +39,7 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <!-- Redirects the guest to the login page if they try to access the homepage and hides the modification buttons -->
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -72,8 +73,10 @@
         <main class="py-4">
             <div class="flexible heading-slot container">
                 {{$title}}
+                <!-- $title is replaced by the content in the <x-slot:title> tags in the $slot pages -->
                 @auth
-                    @if (Auth::user()->admin)
+                    @if (Auth::user()->admin == 1)
+                        <!-- Only the administrator is allowed to create a company or add an employee -->
                         <a href="/create-company">Create Company</a>
                         <a href="/add-employee">Add Employee</a>
 
