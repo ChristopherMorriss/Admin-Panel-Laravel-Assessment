@@ -9,7 +9,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 //Index
 Route::get('/', function () { //The root page
-    return view('welcome');
+    return view('home');
 });
 
 Route::controller(CompanyController::class)->group(function(){ //Controller used for handling all company related pages

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class EmployeeController extends Controller
 {
     public function index(){
-        return view('welcome');
+        return view('home');
     }
     public function show(){ //Displays the list of employees, with the most recently added employee as the first option on the first page
         $employees = Employees::with('companies')->latest()->paginate(10);

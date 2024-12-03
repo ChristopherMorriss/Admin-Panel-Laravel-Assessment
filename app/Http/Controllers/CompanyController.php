@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class CompanyController extends Controller
 {
     public function index(){
-        return view('welcome');
+        return view('home');
     }
     public function show(){//Displays the list of companies, with the most recently added company as the first option on the first page
         $companies = Companies::with('employees')->latest()->paginate(10);
