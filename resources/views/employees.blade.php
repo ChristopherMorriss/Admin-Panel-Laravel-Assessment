@@ -2,25 +2,27 @@
     <x-slot:title>
         Employees
     </x-slot:title>
-    <div class="employee-list">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col" class="lg-only">Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach ($employees as $employee)
-        <div class="article-container">
-            <article class="logo-article">
-                <a href="/employees/{{$employee['id']}}" class="logo-box"> 
-                    <img src="https://picsum.photos/seed/50/50" class="logo-img">
-                    <!-- Placeholder logo used above -->
-                    <div class="contents">
-                        <strong>{{$employee['first_name']}} {{$employee['last_name']}}</strong>
-                        <strong>{{$employee['email']}}</strong>
-                        <strong>{{$employee['phone_number']}}</strong>
-                    </div>
-                </a>
-            </article>
-        </div>
+        <tr>
+            <td><a href="/employees/{{$employee['id']}}" class="logo-box">{{$employee['first_name']}} {{$employee['last_name']}}</a></td>
+            <td><a href="/employees/{{$employee['id']}}" class="logo-box">{{$employee['email']}}</a></td>
+            <td><a href="/employees/{{$employee['id']}}" class="logo-box lg-only">{{$employee['phone_number']}}</a></td>
+        </tr>
         @endforeach
-        <div class="pagination">
-            <!-- Used to show the arrow and numbers links to the other pages of employees -->
-            {{$employees->links()}}
-        </div>
+        
+        </tbody>
+    </table>
+    <div>
+        <!-- Used to show the arrow and numbers links to the other pages of companies -->
+        {{$employees->links()}}
     </div>
 </x-layout>

@@ -87,6 +87,12 @@
     flex-direction: column; 
 }
 
+.lg-only{
+    display: none;
+    @media(min-width: 578px){
+        display: flex;
+    }
+}
 /*List of Objectives:
 Remove created at type columns
 Phone regex

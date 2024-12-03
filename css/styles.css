@@ -1,9 +1,96 @@
 .box {
-  border: 1px solid;
-  padding: 20px;
+  padding: 2px;
+  height: 80px;
+}
+
+.logo-box {
+  padding: 2px;
+  height: 80px;
+  display: flex;
 }
 
 .text {
   border: 5px solid;
   color: red;
-}/*# sourceMappingURL=styles.css.map */
+  height: 50px;
+}
+
+.logo-article {
+  border: 1px solid;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.article {
+  border: 1px solid;
+  margin-bottom: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.company-list {
+  margin-bottom: 10px;
+}
+
+.w-5 {
+  max-width: 20px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex.justify-between.flex-1.sm\:hidden {
+  margin-top: 20px;
+}
+
+.flexible {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (min-width: 578px) {
+  .flexible {
+    flex-direction: row;
+  }
+}
+
+.error-pos {
+  font-weight: bold;
+  color: red;
+}
+
+.heading-slot {
+  font-size: 20px;
+}
+
+.contents {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#phone_number {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.lg-only {
+  display: none;
+}
+@media (min-width: 768px) {
+  .lg-only {
+    display: flex;
+  }
+}
+
+/*List of Objectives:
+Remove created at type columns
+Phone regex
+*//*# sourceMappingURL=styles.css.map */
