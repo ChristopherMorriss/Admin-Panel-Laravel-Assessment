@@ -32,5 +32,4 @@ class Companies extends Model{
     public function employees(){
         return $this->hasMany(Employees::class); //Works perfectly (companies_id needs to match with id from Companies.php)
     }
-    
 }

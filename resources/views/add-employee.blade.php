@@ -15,7 +15,12 @@
                 <div>Email</div>
                 <input id="email" type="email" name="email">
                 <div>Company</div>
-                <input id="company" type="name" name="company">
+                <select name="company" id="company">
+                @foreach ($employees as $employee)
+                <option value="{{$employee['company']}}">{{$employee['company']}}</option>
+                @endforeach
+                </select>
+                <!-- <input id="company" type="name" name="company"> -->
                 <div>Phone Number</div>
                 <input id="phone_number" type="tel" name="phone_number"><br>
                 @auth
@@ -31,6 +36,7 @@
                             @endforeach
                         </div>
                 @endif
+                
             </div>
             
             </form>

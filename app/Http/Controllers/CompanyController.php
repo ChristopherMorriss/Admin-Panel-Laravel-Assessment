@@ -25,6 +25,7 @@ class CompanyController extends Controller
         return view ('create-company');
     }
     public function store(){ //Creates a new company and redirects the user to the companies page
+        
         request()->validate([
             'Name' => ['required', 'min:3'],
             'email' => ['email','nullable'],

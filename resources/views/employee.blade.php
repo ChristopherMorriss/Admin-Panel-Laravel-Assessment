@@ -8,6 +8,7 @@
                     <strong>First Name: {{$employee->first_name}}</strong>
                     <strong>Last Name: {{$employee->last_name}}</strong>
                     <strong>Email: {{$employee['email']}}</strong>
+                    <strong>Company: {{$employee->company}}</strong>
                     <strong>Telephone: {{$employee->phone_number}}</strong>
             </article>
             @auth

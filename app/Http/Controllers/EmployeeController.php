@@ -19,10 +19,14 @@ class EmployeeController extends Controller
         
     }
     public function create(){ //Returns the view for adding a new employee
+        //$employee = Employees::findOrFail(54); //Works fine
+        $employees = Employees::all();
+        //dd($employee->company); 
         if(Auth::guest()){ //Forces users to be logged in before they can try to add an employee 
             return redirect('/login');
         }
-        return view ('add-employee'); 
+        return view ('add-employee', ['employees'=> $employees
+    ]); 
     }
     public function store(){ //Creates a new employee and redirects the user to the employees page
         request()->validate([
@@ -86,6 +90,8 @@ class EmployeeController extends Controller
         return view ('employee', ['employee'=> $employee
         ]);
     }
+    
+    
 }
 
 
